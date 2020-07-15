@@ -2,3 +2,8 @@
 package-lock.json
 yarn-error.log
 yarn.lock
+.env
+/data/landlords.json
+/data/landlords_and_properties.json
+/data/significant_landlords.json
+/data/significant_sorted_landlords.json
