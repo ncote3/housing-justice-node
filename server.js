@@ -33,7 +33,7 @@ const downloadJSONFromS3 = (filePath, bucketName, key) => {
     });
 }
 
-const filePath = './data/';
+const filePath = './';
 const significant_sorted_landlords = 'significant_sorted_landlords.json';
 const landlords_and_properties = 'landlords_and_properties.json';
 const significant_landlords = 'significant_landlords.json';
