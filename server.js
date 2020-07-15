@@ -6,16 +6,13 @@ const app = express();
 
 app.use(cors());
 
-const server = app.listen(8081, function () {
-    const host = "0.0.0.0"
-    const port = server.address().port
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 8000;
+}
+app.listen(port);
 
-    console.log("listening at http://%s:%s", host, port)
-    console.log("http://0.0.0.0:8081/api/landlords")
-    console.log("http://0.0.0.0:8081/api/properties")
-    console.log("http://0.0.0.0:8081/api/landlords-and-properties")
-    console.log("http://0.0.0.0:8081/api/significant-landlords")
-})
+console.log("listening at port: %s", port);
 
 app.get('/', (req, res) => {
     return res.send("Are ya coding son?");
