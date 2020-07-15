@@ -1,7 +1,7 @@
 {
   "name": "housing_justice_node",
   "version": "1.0.0",
-  "description": "",
+  "description": "The backend for philly-landlord-spotter.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,9 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "12.x",
+    "yarn": "1.x"
   }
 }
