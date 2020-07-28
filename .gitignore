@@ -7,3 +7,12 @@ yarn.lock
 /data/landlords_and_properties.json
 /data/significant_landlords.json
 /data/significant_sorted_landlords.json
+/data/zip_code_bar_data.json
+/data/city_wide_dist.json
+/city_wide_dist.json
+/landlords.json
+/landlords_and_properties.json
+/significant_landlords.json
+/significant_sorted_landlords.json
+/zip_code_bar_data.json
+/zip_codes.json

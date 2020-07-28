@@ -16,12 +16,6 @@ app.listen(port);
 
 console.log("listening at port: %s", port);
 
-const filePath = './';
-const significant_sorted_landlords = 'significant_sorted_landlords.json';
-const landlords_and_properties = 'landlords_and_properties.json';
-const significant_landlords = 'significant_landlords.json';
-const landlords = 'landlords.json';
-
 app.get('/', (req, res) => {
     return res.send("Are ya coding son?");
 });
@@ -51,10 +45,10 @@ app.get('/api/significant-sorted-landlords', (req, res) => {
 // Not used
 // Returns an object of addresses.
 // Can be used for auto-filling search boxes for landlord grouping.
-// app.get('/api/properties', (req, res) => {
-//     const properties = JSON.parse(fs.readFileSync('./properties.json', 'utf8'));
-//     return res.send(JSON.stringify(properties));
-// });
+app.get('/api/properties', (req, res) => {
+    const properties = JSON.parse(fs.readFileSync('./properties.json', 'utf8'));
+    return res.send(JSON.stringify(properties));
+});
 
 // Returns an object of landlords with data on addresses, geo coords, number of properties.
 // Useful for returning a smaller number of objects
@@ -63,5 +57,26 @@ app.get('/api/landlords-and-properties/:landlord', (req, res) => {
         fs.readFileSync('./landlords_and_properties.json', 'utf8')
     );
     return res.send(landlordsAndProperties[req.params.landlord]);
+});
+
+
+app.get('/api/zip-code-bar-data', (req, res) => {
+    const data = JSON.parse(fs.readFileSync('./zip_code_bar_data.json', 'utf8'));
+    return res.send(data);
+});
+
+app.get('/api/zip-code-bar-data/:zipCode', (req, res) => {
+    const data = JSON.parse(fs.readFileSync('./zip_code_bar_data.json', 'utf8'));
+    return res.send(data[req.params.zipCode]);
+});
+
+app.get('/api/zip-codes/', (req, res) => {
+    const data = JSON.parse(fs.readFileSync('./zip_codes.json', 'utf8'));
+    return res.send(data);
+});
+
+app.get('/api/cw_property_dist/', (req, res) => {
+    const data = JSON.parse(fs.readFileSync('./city_wide_dist.json', 'utf8'));
+    return res.send(data);
 });
 
