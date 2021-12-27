@@ -9,6 +9,7 @@ yarn.lock
 /data/significant_sorted_landlords.json
 /data/zip_code_bar_data.json
 /data/city_wide_dist.json
+/data/raw/OPA_all.json
 /city_wide_dist.json
 /landlords.json
 /landlords_and_properties.json

@@ -4,6 +4,9 @@ const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 
+const FolderGenerator = require("./folderGeneratorFunctions");
+const DataPull = require("./dataPullingFunctions");
+
 const app = express();
 
 app.use(cors());
@@ -51,7 +54,9 @@ app.get("/api/significant-sorted-landlords", (req, res) => {
 // Returns an object of addresses.
 // Can be used for auto-filling search boxes for landlord grouping.
 app.get("/api/properties", (req, res) => {
-  const properties = JSON.parse(fs.readFileSync("./data/properties.json", "utf8"));
+  const properties = JSON.parse(
+    fs.readFileSync("./data/properties.json", "utf8")
+  );
   return res.send(JSON.stringify(properties));
 });
 
@@ -88,4 +93,22 @@ app.get("/api/cw_property_dist/", (req, res) => {
     fs.readFileSync("./data/city_wide_dist.json", "utf8")
   );
   return res.send(data);
+});
+
+app.get("/api/generator", async (req, res) => {
+  // FolderGenerator.createFullFolderStructure(true);
+
+  const data = await DataPull.pullRawPropertyDataCsv();
+
+  fs.writeFileSync("./data/raw/OPA_all.json", JSON.stringify(data), (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+
+  const SUCCESS_MESSAGE = `Wrote ${data.total_rows} to file.`;
+
+  console.log(SUCCESS_MESSAGE);
+
+  return res.send(SUCCESS_MESSAGE);
 });
